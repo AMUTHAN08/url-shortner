@@ -1,7 +1,6 @@
 package com.urlShortner.project.service;
 
 import com.google.common.hash.BloomFilter;
-import com.urlShortner.project.Repository.ElasticSearchUrlRepository;
 import com.urlShortner.project.Repository.UrlRepository;
 import com.urlShortner.project.entity.UrlDocument;
 import com.urlShortner.project.entity.UrlMapping;
@@ -27,8 +26,8 @@ public class UrlService {
     @Autowired
     private ShorterConvert shorterConvert;
 
-    @Autowired
-    private ElasticSearchUrlRepository elasticSearchUrlRepository;
+//   @Autowired
+//    private ElasticSearchUrlRepository elasticSearchUrlRepository;
 
     @Autowired
     private BloomFilter<String> bloomFilter;
@@ -57,7 +56,7 @@ public class UrlService {
 
         bloomFilter.put(code);
 
-        elasticSearchUrlRepository.save(urlDocument);
+        //elasticSearchUrlRepository.save(urlDocument);
 
         return code;
 

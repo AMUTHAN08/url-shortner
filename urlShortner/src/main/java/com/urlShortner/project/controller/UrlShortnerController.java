@@ -1,7 +1,7 @@
 package com.urlShortner.project.controller;
 
 
-import com.urlShortner.project.Repository.ElasticSearchUrlRepository;
+
 import com.urlShortner.project.dto.UrlRequest;
 import com.urlShortner.project.entity.UrlDocument;
 //import com.urlShortner.project.service.OriginalUrlRequest;
@@ -32,8 +32,8 @@ public class UrlShortnerController {
 //    private OriginalUrlRequest originalUrlRequest;
 
 
-    @Autowired
-    private ElasticSearchUrlRepository elasticSearchUrlRepository;
+//    @Autowired
+//    private ElasticSearchUrlRepository elasticSearchUrlRepository;
 
 
     @GetMapping("/favicon.ico")
@@ -53,9 +53,9 @@ public class UrlShortnerController {
         return ResponseEntity.status(HttpStatus.FOUND).location(URI.create(originalUrl)).build();
     }
 
-    @GetMapping("/search")
-    public List<UrlDocument> search(@RequestParam String keyword){
-        return elasticSearchUrlRepository.findByOriginalUrlContaining(keyword);
-    }
+//    @GetMapping("/search")
+//    public List<UrlDocument> search(@RequestParam String keyword){
+//        return elasticSearchUrlRepository.findByOriginalUrlContaining(keyword);
+//    }
 
 }
