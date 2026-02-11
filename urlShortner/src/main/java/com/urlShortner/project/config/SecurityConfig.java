@@ -20,6 +20,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/", "/health","/actuator/health").permitAll()
                         .requestMatchers("/api/v1/**").authenticated() // secure APIs
                         .requestMatchers("/index.html", "/", "/style.css", "/script.js").authenticated() // UI
                         .requestMatchers("/{code:[a-zA-Z0-9]{6,10}}").permitAll() // short URLs public
