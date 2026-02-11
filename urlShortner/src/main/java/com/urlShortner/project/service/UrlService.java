@@ -2,7 +2,7 @@ package com.urlShortner.project.service;
 
 import com.google.common.hash.BloomFilter;
 import com.urlShortner.project.Repository.UrlRepository;
-import com.urlShortner.project.entity.UrlDocument;
+//import com.urlShortner.project.entity.UrlDocument;
 import com.urlShortner.project.entity.UrlMapping;
 import com.urlShortner.project.kafka.ClickEvent;
 import com.urlShortner.project.kafka.ClickProducer;
@@ -41,7 +41,7 @@ public class UrlService {
     public String shortnerCode(String originalUrl){
         UrlMapping mapping=new UrlMapping();
 
-        UrlDocument urlDocument=new UrlDocument();
+//        UrlDocument urlDocument=new UrlDocument();
 
         String code=shorterConvert.generate();
 
@@ -50,9 +50,9 @@ public class UrlService {
 
         urlRepository.save(mapping);
 
-        urlDocument.setId(mapping.getId().toString());
-        urlDocument.setOriginalUrl(originalUrl);
-        urlDocument.setShortCode(code);
+//        urlDocument.setId(mapping.getId().toString());
+//        urlDocument.setOriginalUrl(originalUrl);
+//        urlDocument.setShortCode(code);
 
         bloomFilter.put(code);
 
