@@ -19,15 +19,9 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/health").permitAll()
-                        .requestMatchers("/{code:[a-zA-Z0-9]{6,10}}").permitAll()
-                        .requestMatchers("/api/v1/**").authenticated()
-                        .requestMatchers("/index.html", "/style.css", "/script.js").authenticated()
-                        .anyRequest().permitAll()
-                )
-                .formLogin(form -> form.defaultSuccessUrl("/index.html", true))
-                .httpBasic(Customizer.withDefaults());
+                .authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
+                .formLogin(form -> form.disable())
+                .httpBasic(httpBasic -> httpBasic.disable());
 
         return http.build();
     }
