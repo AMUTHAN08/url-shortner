@@ -95,12 +95,12 @@ public class UrlService {
         return urlRepository.findByShortCode(code)
                 .orElseThrow(() -> new RuntimeException("URL not found"));
     }
-    @PostConstruct
-    public void loadBloomFromDb() {
-        List<UrlMapping> all = urlRepository.findAll();
-        for (UrlMapping url : all) {
-            bloomFilter.put(url.getShortCode());
-        }
-        System.out.println("Bloom filter loaded with existing URLs");
-    }
+//    @PostConstruct
+//    public void loadBloomFromDb() {
+//        List<UrlMapping> all = urlRepository.findAll();
+//        for (UrlMapping url : all) {
+//            bloomFilter.put(url.getShortCode());
+//        }
+//        System.out.println("Bloom filter loaded with existing URLs");
+//    }
 }
