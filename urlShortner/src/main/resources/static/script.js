@@ -3,6 +3,11 @@ const API_BASE = "/rest/v1";
 async function shortenUrl() {
     const longUrl = document.getElementById("longUrl").value;
 
+    if (!longUrl) {
+        alert("Please enter a URL");
+        return;
+    }
+
     const response = await fetch(`${API_BASE}/shortner`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -10,16 +15,12 @@ async function shortenUrl() {
     });
 
     const text = await response.text();
-    document.getElementById("shortResult").innerHTML =
-        `Short URL: <a href="${text}" target="_blank">${text}</a>`;
+
+    document.getElementById("shortLink").value = text;
+    document.getElementById("resultBox").classList.remove("hidden");
 }
 
-async function getStats() {
-    const code = document.getElementById("code").value;
-
-    const response = await fetch(`${API_BASE}/analytics/${code}`);
-    const data = await response.json();
-
-    document.getElementById("stats").innerHTML =
-        `Total Clicks: ${data.totalClicks} <br> Unique Users: ${data.uniqueUsers}`;
+function copyLink() {
+    const input = document.getElementById("shortLink");
+    navigator.clipboard.writeText(input.value);
 }
