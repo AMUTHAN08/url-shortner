@@ -43,7 +43,7 @@ public class UrlShortnerController {
     @PostMapping("/rest/v1/shortner")
     public ResponseEntity<String> shortner(@RequestBody UrlRequest urlRequest){
         String code=urlService.shortnerCode(urlRequest.getOriginalUrl());
-        return ResponseEntity.ok("http://localhost:8081/"+code);
+        return ResponseEntity.ok("https://url-shortner-production-9b8f.up.railway.app/"+code);
     }
 
     @GetMapping("/{code:[a-zA-Z0-9]{6,10}}")
